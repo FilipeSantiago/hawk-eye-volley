@@ -36,8 +36,8 @@ class DiffConfig:
 
 
 CONFIG = DiffConfig(
-    input_frames_dir="/home/bugslayer/Downloads/volley video footage/frames/videoplayback-00.06.05.191-00.11.14.198",
-    output_diff_dir="/home/bugslayer/Downloads/volley video footage/diff_frames",
+    input_frames_dir="/home/skynet/Downloads/hawk eye/data/frames/videoplayback.1773931843922.publer.com-00.00.00.000-00.10.03.976-00.06.08.875-00.10.04.033/",
+    output_diff_dir="/home/skynet/Downloads/hawk eye/data/diff_frames",
     start_frame=2,
     end_frame=None,
     use_roi=False,
