@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from ball_detection.annotated_candidate_dataset_builder import (
+from ball_detection.training.annotated_candidate_dataset_builder import (
     AnnotatedCandidateDatasetBuilder,
 )
-from ball_detection.annotated_candidate_dataset_config import (
+from ball_detection.training.annotated_candidate_dataset_config import (
     AnnotatedCandidateDatasetConfig,
 )
 

@@ -1,0 +1,19 @@
+{
+  "video": "/home/bugslayer/Downloads/volley video footage/data/videoplayback.1773931843922.publer.com-00.00.00.000-00.10.03.976-00.06.08.875-00.10.04.033.mp4",
+  "processing_root": "/home/bugslayer/Downloads/volley video footage/data/processing_folder",
+  "model": "ball_cnn_best.pt",
+  "output_video": null,
+  "threshold": null,
+  "device": null,
+  "batch_size": 64,
+  "min_moving_area": 30,
+  "max_moving_area": 350,
+  "diff_threshold": 12,
+  "expansion_factor": 2.0,
+  "output_size": [64, 64],
+  "padding_mode": "constant",
+  "normalize": true,
+  "draw_score": true,
+  "codec": "mp4v",
+  "image_ext": ".jpg"
+}

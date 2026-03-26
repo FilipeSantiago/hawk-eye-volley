@@ -3,6 +3,8 @@ from pathlib import Path
 
 import cv2
 
+from ball_detection.motion_detector import MotionCenterConfig, MotionDetector
+
 try:
     from tqdm import tqdm
 except ImportError:  # pragma: no cover - optional progress bar
@@ -16,6 +18,51 @@ FRAME_DIR = Path(
 DIFF_DIR = Path("/home/bugslayer/Downloads/volley video footage/data/diff_frames/")
 CANDIDATE_DIR = Path("/home/bugslayer/Downloads/volley video footage/data/candidates/")
 PERSON_ANN_DIR = Path("/home/bugslayer/Downloads/volley video footage/data/person_annotations")
+
+
+def demo_center_estimation(
+    frame_dir: Path,
+    frame_index: int,
+    diff_threshold: int = 12,
+    min_moving_area: int = 30,
+    strategy: str = "appearance_weighted",
+    max_candidates: int = 3,
+) -> list[dict]:
+    """Run the 3-frame center estimator on a single window and print debug output.
+
+    frame_index is 1-based (frame_000001 -> 1).
+    """
+    frame_paths = sorted(
+        path for path in frame_dir.iterdir() if path.is_file()
+    )
+    if frame_index < 2 or frame_index > len(frame_paths):
+        raise ValueError("frame_index must be >= 2 and <= number of frames.")
+
+    prev = cv2.imread(str(frame_paths[frame_index - 2]))
+    curr = cv2.imread(str(frame_paths[frame_index - 1]))
+    next_frame = (
+        cv2.imread(str(frame_paths[frame_index]))
+        if frame_index < len(frame_paths)
+        else None
+    )
+
+    if prev is None or curr is None:
+        raise RuntimeError("Failed to load required frames for demo.")
+
+    center_config = MotionCenterConfig(strategy=strategy)
+    detector = MotionDetector(
+        frames_dir=frame_dir,
+        annotated_dir=frame_dir,
+        candidates_dir=frame_dir,
+        min_moving_area=min_moving_area,
+        diff_threshold=diff_threshold,
+        center_config=center_config,
+    )
+
+    candidates = detector.estimate_candidates_for_triplet(prev, curr, next_frame)
+    for candidate in candidates[:max_candidates]:
+        print(json.dumps(candidate, indent=2))
+    return candidates
 
 
 def iter_frame_files(frame_dir: Path = FRAME_DIR):

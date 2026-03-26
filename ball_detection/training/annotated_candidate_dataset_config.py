@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from ball_detection.candidate_dataset_constants import PADDING_MODE_TO_CV2
+from ball_detection.utils.candidate_dataset_constants import PADDING_MODE_TO_CV2
 
 
 @dataclass

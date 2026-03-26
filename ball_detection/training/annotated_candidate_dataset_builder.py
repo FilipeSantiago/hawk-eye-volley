@@ -5,10 +5,10 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from ball_detection.annotated_candidate_dataset_config import AnnotatedCandidateDatasetConfig
-from ball_detection.candidate_crop_preprocessor import CandidateCropPreprocessor
-from ball_detection.candidate_dataset_constants import IMAGE_EXTENSIONS, TOKEN_SANITIZER_PATTERN
-from ball_detection.dataset_build_summary import DatasetBuildSummary
+from ball_detection.training.annotated_candidate_dataset_config import AnnotatedCandidateDatasetConfig
+from ball_detection.training.candidate_crop_preprocessor import CandidateCropPreprocessor
+from ball_detection.utils.candidate_dataset_constants import IMAGE_EXTENSIONS, TOKEN_SANITIZER_PATTERN
+from ball_detection.utils.dataset_build_summary import DatasetBuildSummary
 
 
 class AnnotatedCandidateDatasetBuilder:

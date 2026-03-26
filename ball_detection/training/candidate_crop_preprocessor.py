@@ -7,13 +7,13 @@ from typing import Any
 import cv2
 import numpy as np
 
-from ball_detection.annotated_candidate_dataset_config import AnnotatedCandidateDatasetConfig
-from ball_detection.candidate_dataset_constants import (
+from ball_detection.training.annotated_candidate_dataset_config import AnnotatedCandidateDatasetConfig
+from ball_detection.utils.candidate_dataset_constants import (
     FILENAME_PATTERN,
     IMAGE_EXTENSIONS,
     PADDING_MODE_TO_CV2,
 )
-from ball_detection.processed_candidate_sample import ProcessedCandidateSample
+from ball_detection.utils.processed_candidate_sample import ProcessedCandidateSample
 
 
 class CandidateCropPreprocessor:
@@ -284,4 +284,3 @@ class CandidateCropPreprocessor:
 
         self._candidate_payload_cache[frame_stem] = payload
         return payload
-

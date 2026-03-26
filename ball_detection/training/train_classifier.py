@@ -47,7 +47,10 @@ class BallCandidateCNN(nn.Module):
             nn.Linear(128, 32),
             nn.ReLU(inplace=True),
             nn.Dropout(0.15),
-            nn.Linear(32, 1),
+            nn.Linear(32, 16),
+            nn.ReLU(inplace=True),
+            nn.Dropout(0.15),
+            nn.Linear(16, 1)
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
